@@ -68,7 +68,8 @@ Pace.on('done', function() {
       crossFade(); // start crossfader
       $(this).remove(); 
 
-      // Hide the help text
+      // Set up the help text
+      $('#helpbox, #legendbox').removeClass('hidden');
       setTimeout(function() {
         $('#helpbox').fadeOut('slow');
       }, 20 * 1000);

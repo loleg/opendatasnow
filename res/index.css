@@ -369,7 +369,7 @@ body {
 
 /* line 59, ../sass/_main.scss */
 #helpbox {
-  z-index: 125;
+  z-index: 1000;
   padding-bottom: 0.5em;
 }
 
@@ -498,7 +498,7 @@ button.plus, button.minus {
   position: absolute;
   width: 100%;
   text-align: center;
-  margin-top: 1em;
+  margin-top: 2em;
   font-size: 159%;
   line-height: 108%;
   opacity: 0.8;
