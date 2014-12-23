@@ -1,6 +1,7 @@
 var MAX_PACKAGES = 1848; // as of 23.12.2014
 var NUM_RESULTS = 30;
 var MAX_TITLE_LENGTH = 50;
+var NUM_RAINDROPS = 40;
 
 // Prepare the data query
 var start_at = Math.round(Math.random() * (MAX_PACKAGES-NUM_RESULTS));
@@ -52,7 +53,7 @@ var crossFade = function() {
 
 // Set up heavy rain
 var $heavyrain = $('#heavyrain');
-for (var i = 0; i < 50; i++) {
+for (var i = 0; i < NUM_RAINDROPS; i++) {
   setTimeout(function() {
     var pc = Math.round(Math.random() * 100) + '%';
     $heavyrain.append('<div class="raindrop" '+
