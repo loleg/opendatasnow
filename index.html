@@ -9,7 +9,7 @@
 	<body>
 		<div class="help" id="helpbox">
 			<button class="close" onclick="document.getElementById('helpbox').style.display = 'none';">&times;</button>
-			Click on the falling snow to learn more about that dataset.
+			Tap the falling snow to learn more about that dataset.
 		</div>
 
 		<div id="loading">Loading, please wait ...</div>
@@ -34,13 +34,18 @@
 			</div>
 		</div>
 
-<div class="flakes">
-	 <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-</div>
+		<div class="flakes">
+			 <!--<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>-->
+		</div>
 
 		<div id="map"></div>
 		
 		<div class="labels" style="display:none"></div>
+
+		<!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script-->
+		<script>window.jQuery || document.write('<script src="lib/jquery-1.11.2.min"><\/script>')</script>
+
+		<script src="res/datasnow.js"></script>
 <!--
 		<script src="lib/three/three.min.js"></script>
 		<! - - <script src="lib/three/libs/stats.min.js"></script> - ->
@@ -56,8 +61,6 @@
 		<script src="lib/fit-projection.js"></script>
         <script src="lib/proj4.js"></script>
 	
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="lib/jquery-1.11.1.min.js"><\/script>')</script>
 						
 		<script script type="text/javascript" src="http://api.geo.admin.ch/loader.js"></script>
 		
