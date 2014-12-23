@@ -13,7 +13,7 @@ $.ajax({
   url: remote_url,
   success: function(data) {
     var packages = data.result.results;
-    alert('Total results found: ' + packages.length)
+    //alert('Total results found: ' + packages.length)
     var flakes = $('.flakes');
     $.each(packages, function() {
       var title = this.title;
