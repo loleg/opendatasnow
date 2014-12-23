@@ -4,6 +4,8 @@
 		<title>Let is snow (Open Data)!</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="lib/pace.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="lib/pace.flat-center.css">
 		<link rel="stylesheet" type="text/css" href="res/index.css">
 	</head>
 	<body>
@@ -12,7 +14,9 @@
 			Tap the falling snow to learn more about that dataset.
 		</div>
 
-		<div id="loading">Loading, please wait ...</div>
+		<div id="heavyrain">
+			<h1>Is heavy data getting you down?</h1>
+		</div>
 		
 		<div class="legend" id="legendbox">
 			<a href="http://make.opendata.ch/" target="_blank" style="float:left">
@@ -21,7 +25,15 @@
 			<a href="http://github.com/loleg/letitsnow" target="_blank" style="float:right">
 				<img src="res/github-256-black.png">
 			</a>
-			<div class="title">
+			<div class="message">
+				Public domain photos from the 
+				<a href="http://www.nb.admin.ch/aktuelles/03147/04467/04642/index.html?lang=de" target="_blank">
+					Swiss National Library</a>
+				on 
+				<a href="https://commons.wikimedia.org/w/index.php?title=Category:Media_contributed_by_the_Swiss_National_Library" target="_blank">
+					Wikimedia Commons</a>
+			</div>
+			<div class="title hidden">
 				<span>Let it snow (Open Data!)</span>
 				<small>v.2014.12</small>
 			</div>
@@ -34,11 +46,22 @@
 			</div>
 		</div>
 
-		<div class="flakes">
-			 <!--<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>-->
+		<div class="flakes hidden"></div>
+
+		<div class="banner">
+			<h2>Buon natale!</h2>
+			<h2>Joyeux Nöel!</h2>
+			<h2>Frohe Weihnachten!</h2>
+			<h2>Merry Christmas!</h2>
 		</div>
 
-		<div id="map"></div>
+		<div class="crossfade">
+			<img src="photos/CH-NB-Berner_Oberland-nbdig-18298-page008.jpg">
+			<img src="photos/CH-NB_-_Maloja,_Ortsteilansicht_-_EAD-WEHR-14959-B.jpg">
+			<img src="photos/CH-NB_-_Samedan,_Ortsteilansicht_-_EAD-WEHR-22267-A.jpg">
+			<img src="photos/CH-NB_-_St._Moritz,_Ortsteilansicht_-_EAD-WEHR-7212-B.jpg">
+			<img src="photos/CH-NB_-_Walliser_Alpen_-_Eduard_Spelterini_-_EAD-WEHR-32055-B.jpg">
+		</div>
 		
 		<div class="labels" style="display:none"></div>
 
@@ -46,31 +69,5 @@
 		<script>window.jQuery || document.write('<script src="lib/jquery-1.11.2.min"><\/script>')</script>
 
 		<script src="res/datasnow.js"></script>
-<!--
-		<script src="lib/three/three.min.js"></script>
-		<! - - <script src="lib/three/libs/stats.min.js"></script> - ->
-		<script src="lib/three/controls/OrbitControls.js"></script>
-		<script src="lib/three/Detector.js"></script>
-		<script src="lib/three/ShaderTerrain.js"></script>
-        <script src="lib/three/ConvexGeometry.js"></script>
-        <script src="lib/three/ColorConverter.js"></script>
-		
-		<script src="lib/d3/d3.v2.js"></script>
-		<script src="lib/d3/d3-threeD.js"></script>
-        
-		<script src="lib/fit-projection.js"></script>
-        <script src="lib/proj4.js"></script>
-	
-						
-		<script script type="text/javascript" src="http://api.geo.admin.ch/loader.js"></script>
-		
-		<script src="js/config.js"></script>
-		<script src="js/geoadmin.js"></script>
-		<script src="js/heightmap.js"></script>
-		<script src="js/render.js"></script>
-		<script src="js/ui.js"></script>
-		<script src="js/features.js"></script>
-		<script src="js/data.js"></script>
--->
 	</body>
 </html>

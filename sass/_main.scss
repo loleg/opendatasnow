@@ -1,14 +1,38 @@
 body {
 	font-family: Monospace;
-	background-color: #f0f0f0;
 	margin: 0px;
 	overflow: hidden;
-	
-	background: #aaa;
+}
+
+.crossfade img {
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	-webkit-transition: opacity 2s ease-in-out;
+	-moz-transition: opacity 2s ease-in-out;
+	-o-transition: opacity 2s ease-in-out;
+	-ms-transition: opacity 2s ease-in-out;
+	transition: opacity 2s ease-in-out;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  .crossfade img {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+.crossfade img.active {
+	opacity: 1;
 }
 
 #oldie {
-	background:#fff url(res/screenshot.jpg) no-repeat 50% 50% !important;
+	background:#fff url(../res/screenshot.jpg) no-repeat 50% 50% !important;
 	background-size: 100% auto !important;
 	width:100% !important;
 	height:100% !important;
@@ -23,13 +47,20 @@ body {
 	border: 1px solid red;
 }
 
+.hidden {
+	display: none !important;
+}
+
 #cnv, #map {
 	position:absolute; top:0px; left:0px; display:none;
 }
 #cnv { width:128px; height:128px; }
 
+#helpbox { z-index: 125; padding-bottom:0.5em; }
+
 .help, .legend {
 	padding:0.5em;
+	padding-bottom: 0px;
 	font-family: Monospace;
 	background:#fff;
 	opacity:0.8;
@@ -52,28 +83,32 @@ body {
 	opacity:1.0;
 	z-index:9999;
 	font: 10pt sans-serif;
+
+	img {
+		height:27px;
+		padding-right:2em;
+	}
+	button { 
+		border: 1px solid #ddd; 
+		background:transparent;
+		border-radius:3px; padding:5px;
+		box-shadow: inset 2px 2px 3px #fff; 
+		font-weight: bold;
+		color: #999;
+	}
+	.on, button:active { 
+		box-shadow: inset 2px 2px 3px #E61414;
+		color: black;
+	}
+	.title {
+		margin-right: 2em;
+		display: inline;
+	}
+	a, span {
+		line-height: 28px;
+	}
+	.title span { font-size:11pt; color: #E61414; font-weight:bold; }
 }
-.legend img {
-	height:27px;
-	padding-right:2em;
-}
-.legend button { 
-	border: 1px solid #ddd; 
-	background:transparent;
-	border-radius:3px; padding:5px;
-	box-shadow: inset 2px 2px 3px #fff; 
-	font-weight: bold;
-	color: #999;
-}
-.legend .on, button:active { 
-	box-shadow: inset 2px 2px 3px #E61414;
-	color: black;
-}
-.legend .title {
-	margin-right: 2em;
-	display: inline;
-}
-.title span { font-size:11pt; color: #E61414; font-weight:bold; }
 
 .ghost {
     position: fixed;
@@ -101,8 +136,11 @@ button.plus, button.minus {
 
 /* Snowflakes customizations */
 .flakes {
-  position: relative;
-  top: -140px;
+  position: absolute;
+  text-align: center;
+  width: 100%; height: 100%;
+  top: -140px; left: 0px;
+  z-index: 300;
   i {
     background-color: transparent;
     -webkit-animation-play-state: running;
@@ -111,4 +149,39 @@ button.plus, button.minus {
     -webkit-animation-iteration-count: 4;
     animation-iteration-count: 4;
   }
+}
+
+/* Text overlay */
+.banner {
+	font-family: 'Satisfy', cursive;
+	z-index: 125;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 1em;
+    font-size: 159%;
+    line-height: 108%;
+    opacity: 0.8;
+    color: green;
+    text-shadow: 1px 1px white;
+}
+.banner h2:nth-child(even) {
+	color: red;
+}
+
+/* Raindrops */
+#heavyrain {
+	z-index: 150;
+	position: absolute;
+	width: 100%; height: 100%;
+  	top: 0px; left: 0px;
+  	background-color: #aaa;
+
+  	h1 {
+  		position: absolute;
+  		text-align: center;
+  		width: 100%;
+  		top: 20%;
+	  	color: #555;
+  	}
 }
