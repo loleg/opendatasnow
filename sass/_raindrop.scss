@@ -25,6 +25,31 @@ $color_dos:rgba(255,255,255,1);
 $color_tres:rgba(255,255,255,0.1);
 $transparent:rgba(0,0,0,0);
 
+// animations mixin
+@mixin animation($t) {
+     -moz-animation: $t;
+       -o-animation: $t;
+      -ms-animation: $t;
+  -webkit-animation: $t;
+          animation: $t;
+}
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
 //////////////////////////////////////////////// DROP
 
 .raindrop{
@@ -41,17 +66,16 @@ $transparent:rgba(0,0,0,0);
              0 0 0 $D $color_uno,
              0 0 0 $D $color_uno;
   position:absolute;
-  z-index:200;
   top:$top_top; left:50%;
   margin-top:0; margin-left:-$R;
   width:$D;
   height:$D;
-  animation:drop $A cubic-bezier(0, 0, 1, .5) infinite;
+  @include animation(drop $A cubic-bezier(0, 0, 1, .5) infinite);
 }
 
 //////////////////////////////////////////////// ANIMATED
 
-@keyframes drop{
+@include keyframes(drop) {
   3%{
     box-shadow:$R -$R 0 $D/4 $color_dos,
                $R -$R*2 0 $D/3.8 $color_dos,

@@ -33,7 +33,7 @@ $.ajax({
     	infobox.html(
     		'<a href="' + url + '" target="_blank">' +
     		$(this).data('title') + '</a> ' +
-    		'(' + $(this).data('author') + ')');
+    		'(' + $(this).data('author') + ')').hide().fadeIn();
     });
   },
   error: function(err) {
