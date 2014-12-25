@@ -3,6 +3,9 @@ var NUM_RESULTS = 30;
 var MAX_TITLE_LENGTH = 45;
 var NUM_RAINDROPS = 40;
 
+// Global container
+var $flakes = $('.flakes');
+
 // Prepare the data query
 var start_at = Math.round(Math.random() * (MAX_PACKAGES-NUM_RESULTS));
 var random_url = 'http://opendata.admin.ch/api/3/action/package_search'
@@ -22,9 +25,9 @@ document.ontouchmove = function(e) {e.preventDefault()};
 
 // Snow starts after data is loaded
 function letItSnow() {
-  if (!$('.flakes').hasClass('hidden')) return;
+  if (!$flakes.hasClass('hidden')) return;
   setTimeout(function() {
-    $('.flakes').removeClass('hidden');
+    $flakes.removeClass('hidden');
     $heavyrain.fadeOut(function() { 
       // Set up the help text
       $('#helpbox, #legendbox').removeClass('hidden');
@@ -48,14 +51,13 @@ function getDataFeed(remote_url) {
     var packages = (typeof data.result.results === 'undefined') ?
 	data.result : data.result.results;
     //alert('Total results found: ' + packages.length)
-    var flakes = $('.flakes');
-    flakes.find('i').remove();
+    $flakes.find('i').remove();
     $.each(packages, function() {
 	var pp = (typeof this.data === 'undefined') ? this : this.data.package;
       var title = pp.title;
       if (title.length > MAX_TITLE_LENGTH) 
         title = title.substring(0, MAX_TITLE_LENGTH) + '...';
-    	flakes.append('<i></i>').find('i:last').data({
+    	$flakes.append('<i></i>').find('i:last').data({
 			'id':   	pp.id,
       'author': pp.author,
 			'title': 	title,
@@ -63,14 +65,14 @@ function getDataFeed(remote_url) {
     });
     var infobox = $('#legendbox .message');
     var baseurl = 'http://opendata.admin.ch/de/dataset/';
-    flakes.find('i').on('mouseover click', function() {
+    $flakes.find('i').on('mouseover click', function() {
     	var url = baseurl + $(this).data('id');
     	infobox.html(
     		'<a href="' + url + '" target="_blank">' +
     		$(this).data('title') + '</a> ' +
     		'(' + $(this).data('author') + ')').hide().fadeIn();
 	// Highlight snowflake
-	flakes.find('.active').removeClass('active');
+	$flakes.find('.active').removeClass('active');
 	$(this).addClass('active');
     });
     // Clear info and reload
@@ -83,6 +85,26 @@ function getDataFeed(remote_url) {
   }
   }); // -ajax
 }
+
+// Navigation buttons
+$('.snownav').click(function() {
+	var curflake = $flakes.find('.active');
+	if (curflake.length == 0) {
+		$flakes.find('i:first').click();
+	} else if ($(this).hasClass('next')) {
+		if (curflake.is(':last-child')) {
+			$flakes.find('i:first').click();
+		} else {
+			curflake.next().click();
+		}
+	} else {
+		if (curflake.is(':first-child')) {
+			$flakes.find('i:last').click();
+		} else {
+			curflake.prev().click();
+		}
+	}
+});
 
 // Set up crossfader
 var crossTimer = 8, crossCurrent = 0;
