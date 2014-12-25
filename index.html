@@ -10,8 +10,9 @@
 	</head>
 	<body>
 		<div class="help hidden" id="helpbox">
+			The snow is made from the freshest <a href="http://opendata.admin.ch" target="_blank">opendata.admin.ch</a> packages. Tap or hover to learn more.
+			<button class="getrandompackages">I'm feeling lucky</button>
 			<button class="close" onclick="document.getElementById('helpbox').style.display = 'none';">&times;</button>
-			The snow is made from <a href="http://opendata.admin.ch" target="_blank">opendata.admin.ch</a> packages. Tap or hover to learn more. Reload for fresh powder.
 		</div>
 
 		<div id="heavyrain">
@@ -59,5 +60,6 @@
 		<script>window.jQuery || document.write('<script src="lib/jquery-1.11.2.min"><\/script>')</script>
 
 		<script src="res/datasnow.js"></script>
+		<style type="text/css">i.active { background-color:#37f; }</style>
 	</body>
 </html>

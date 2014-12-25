@@ -5,25 +5,56 @@ var NUM_RAINDROPS = 40;
 
 // Prepare the data query
 var start_at = Math.round(Math.random() * (MAX_PACKAGES-NUM_RESULTS));
-var remote_url = 'http://opendata.admin.ch/api/3/action/package_search'
+var random_url = 'http://opendata.admin.ch/api/3/action/package_search'
       + '?rows=' + NUM_RESULTS + '&start=' + start_at;
 
+var DEFAULT_URL = 'data/recently_changed_packages_activity_list.json';
+
+Pace.on('done', function() {
+	getDataFeed(DEFAULT_URL);
+});
+$('button.getrandompackages').click(function() {
+	getDataFeed(random_url);
+});
+
+// Snow starts after data is loaded
+function letItSnow() {
+  if (!$('.flakes').hasClass('hidden')) return;
+  setTimeout(function() {
+    $('.flakes').removeClass('hidden');
+    $heavyrain.fadeOut(function() { 
+      // Set up the help text
+      $('#helpbox, #legendbox').removeClass('hidden');
+
+      // Start crossfader
+      crossFade();
+      $(this).remove(); 
+    });
+  }, 3 * 1000);
+}
+
 // Load the CKAN data
-$.ajax({
-  //url: 'data/package_search.json',
+function getDataFeed(remote_url) {
+  $.ajax({
   url: remote_url,
   success: function(data) {
-    var packages = data.result.results;
+    if (typeof data.result === 'undefined') {
+	$('#heavyrain').html('Cannot read the data today, rainy weather continues...');
+	console.log(data);
+    }
+    var packages = (typeof data.result.results === 'undefined') ?
+	data.result : data.result.results;
     //alert('Total results found: ' + packages.length)
     var flakes = $('.flakes');
+    flakes.find('i').remove();
     $.each(packages, function() {
-      var title = this.title;
-      console.log(title);
+	var pp = (typeof this.data === 'undefined') ? this : this.data.package;
+      var title = pp.title;
       if (title.length > MAX_TITLE_LENGTH) 
         title = title.substring(0, MAX_TITLE_LENGTH) + '...';
     	flakes.append('<i></i>').find('i:last').data({
-			'id':   	this.id,
-      'author': this.author,
+			'id':   	pp.id,
+      'author': pp.author,
 			'title': 	title,
     	});
     });
@@ -35,12 +66,18 @@ $.ajax({
     		'<a href="' + url + '" target="_blank">' +
     		$(this).data('title') + '</a> ' +
     		'(' + $(this).data('author') + ')').hide().fadeIn();
+	// Highlight snowflake
+	flakes.find('.active').removeClass('active');
+	$(this).addClass('active');
     });
+    letItSnow();
   },
   error: function(err) {
-  	console.log(err.responseText);
+    $('#heavyrain').html('We are sorry, the data is not open today, rainy weather continues...');
+    console.log(err.responseText);
   }
-});
+  }); // -ajax
+}
 
 // Set up crossfader
 var crossTimer = 8, crossCurrent = 0;
@@ -60,23 +97,6 @@ for (var i = 0; i < NUM_RAINDROPS; i++) {
         'style="left:' + pc + '"></div>');
   }, i * 100);
 }
-
-// Wait at least this long
-Pace.on('done', function() {
-  setTimeout(function() {
-    $('.flakes').removeClass('hidden');
-    $heavyrain.fadeOut(function() { 
-      crossFade(); // start crossfader
-      $(this).remove(); 
-
-      // Set up the help text
-      $('#helpbox, #legendbox').removeClass('hidden');
-      setTimeout(function() {
-        $('#helpbox').fadeOut('slow');
-      }, 20 * 1000);
-    });
-  }, 2 * 1000);
-});
 
 // Randomize the greetings order
 var randomDivs = $(".banner h2").get().sort(function(){ 
