@@ -7,16 +7,15 @@ var NUM_RAINDROPS = 40;
 var $flakes = $('.flakes');
 
 // Prepare the data query
-var start_at = Math.round(Math.random() * (MAX_PACKAGES-NUM_RESULTS));
-var random_url = 'http://opendata.admin.ch/api/3/action/package_search'
-      + '?rows=' + NUM_RESULTS + '&start=' + start_at;
-
 var DEFAULT_URL = 'data/recently_changed_packages_activity_list.json';
-
 Pace.on('done', function() {
 	getDataFeed(DEFAULT_URL);
 });
 $('button.getrandompackages').click(function() {
+	var start_at = Math.round(Math.random() * (MAX_PACKAGES-NUM_RESULTS));
+	var random_url = 'http://opendata.admin.ch/api/3/action/package_search'
+		  + '?rows=' + NUM_RESULTS + '&start=' + start_at;
+
 	getDataFeed(random_url);
 });
 
@@ -45,7 +44,7 @@ function getDataFeed(remote_url) {
   url: remote_url,
   success: function(data) {
     if (typeof data.result === 'undefined') {
-	$('#heavyrain').html('Cannot read the data today, rainy weather continues...');
+	$('#heavyrain').html('Cannot read the data today, rainy weather continues...').show();
 	console.log(data);
     }
     var packages = (typeof data.result.results === 'undefined') ?
@@ -80,7 +79,7 @@ function getDataFeed(remote_url) {
     letItSnow();
   },
   error: function(err) {
-    $('#heavyrain').html('We are sorry, the data is not open today, rainy weather continues...');
+    $('#heavyrain').html('We are sorry, the data is not open today, rainy weather continues...').show();
     console.log(err.responseText);
   }
   }); // -ajax
