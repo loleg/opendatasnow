@@ -3,6 +3,8 @@
 	<head>
 		<title>Let it snow!</title>
 		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<script src="lib/pace.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="lib/pace.flat-center.css">
@@ -61,6 +63,11 @@
 		<script>window.jQuery || document.write('<script src="lib/jquery-1.11.2.min"><\/script>')</script>
 
 		<script src="res/datasnow.js"></script>
-		<style type="text/css">i.active { background-color:#37f; }</style>
+		<style type="text/css">
+			/* Selected snowflake */
+			i.active { background-color:#37f; }
+			/* Pin to top */
+			#helpbox { position:fixed; top:0px; }
+		</style>
 	</body>
 </html>

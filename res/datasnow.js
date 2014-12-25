@@ -17,6 +17,9 @@ $('button.getrandompackages').click(function() {
 	getDataFeed(random_url);
 });
 
+// Disable page bounce on touch devices
+document.ontouchmove = function(e) {e.preventDefault()};
+
 // Snow starts after data is loaded
 function letItSnow() {
   if (!$('.flakes').hasClass('hidden')) return;
