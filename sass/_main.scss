@@ -56,7 +56,12 @@ body {
 }
 #cnv { width:128px; height:128px; }
 
-#helpbox { z-index: 1000; padding-bottom:0.5em; }
+#helpbox { 
+	position:fixed; 
+	top:0px;
+	z-index: 1000; 
+	padding-bottom:0.5em; 
+}
 
 .help, .legend {
 	padding:0.5em;
@@ -75,7 +80,7 @@ body {
 	text-align:center;
 }
 .legend {
-	position:absolute;
+	position:fixed;
 	width:100%;
 	left:0px;
 	bottom:0px;
@@ -149,6 +154,11 @@ button.plus, button.minus {
     -webkit-animation-iteration-count: 4;
     animation-iteration-count: 4;
   }
+}
+/* Selected snowflake */
+i.active { 
+	background-color:#37f !important; 
+	opacity:1 !important; 
 }
 
 /* Text overlay */

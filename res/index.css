@@ -496,11 +496,13 @@ body {
 
 /* line 59, ../sass/_main.scss */
 #helpbox {
+  position: fixed;
+  top: 0px;
   z-index: 1000;
   padding-bottom: 0.5em;
 }
 
-/* line 61, ../sass/_main.scss */
+/* line 66, ../sass/_main.scss */
 .help, .legend {
   padding: 0.5em;
   padding-bottom: 0px;
@@ -512,7 +514,7 @@ body {
   font-size: 90%;
 }
 
-/* line 71, ../sass/_main.scss */
+/* line 76, ../sass/_main.scss */
 .help {
   position: absolute;
   top: 0px;
@@ -520,9 +522,9 @@ body {
   text-align: center;
 }
 
-/* line 77, ../sass/_main.scss */
+/* line 82, ../sass/_main.scss */
 .legend {
-  position: absolute;
+  position: fixed;
   width: 100%;
   left: 0px;
   bottom: 0px;
@@ -531,12 +533,12 @@ body {
   z-index: 9999;
   font: 10pt sans-serif;
 }
-/* line 87, ../sass/_main.scss */
+/* line 92, ../sass/_main.scss */
 .legend img {
   height: 27px;
   padding-right: 2em;
 }
-/* line 91, ../sass/_main.scss */
+/* line 96, ../sass/_main.scss */
 .legend button {
   border: 1px solid #ddd;
   background: transparent;
@@ -546,59 +548,59 @@ body {
   font-weight: bold;
   color: #999;
 }
-/* line 99, ../sass/_main.scss */
+/* line 104, ../sass/_main.scss */
 .legend .on, .legend button:active {
   box-shadow: inset 2px 2px 3px #E61414;
   color: black;
 }
-/* line 103, ../sass/_main.scss */
+/* line 108, ../sass/_main.scss */
 .legend .title {
   margin-right: 2em;
   display: inline;
 }
-/* line 107, ../sass/_main.scss */
+/* line 112, ../sass/_main.scss */
 .legend a, .legend span {
   line-height: 28px;
 }
-/* line 110, ../sass/_main.scss */
+/* line 115, ../sass/_main.scss */
 .legend .title span {
   font-size: 11pt;
   color: #E61414;
   font-weight: bold;
 }
 
-/* line 113, ../sass/_main.scss */
+/* line 118, ../sass/_main.scss */
 .ghost {
   position: fixed;
   left: 0px;
   top: 0px;
 }
 
-/* line 119, ../sass/_main.scss */
+/* line 124, ../sass/_main.scss */
 .labels div {
   position: absolute;
   text-align: right;
   border-top: 1px solid white;
 }
 
-/* line 124, ../sass/_main.scss */
+/* line 129, ../sass/_main.scss */
 .labels div span {
   background: #fff;
 }
 
-/* line 128, ../sass/_main.scss */
+/* line 133, ../sass/_main.scss */
 .toolbar span {
   /*border-right:1px solid black;*/
   margin-right: 1em;
 }
 
-/* line 133, ../sass/_main.scss */
+/* line 138, ../sass/_main.scss */
 button.plus, button.minus {
   width: 3em;
 }
 
 /* Snowflakes customizations */
-/* line 138, ../sass/_main.scss */
+/* line 143, ../sass/_main.scss */
 .flakes {
   position: absolute;
   text-align: center;
@@ -608,7 +610,7 @@ button.plus, button.minus {
   left: 0px;
   z-index: 300;
 }
-/* line 144, ../sass/_main.scss */
+/* line 149, ../sass/_main.scss */
 .flakes i {
   background-color: transparent;
   -webkit-animation-play-state: running;
@@ -617,8 +619,15 @@ button.plus, button.minus {
   animation-iteration-count: 4;
 }
 
+/* Selected snowflake */
+/* line 159, ../sass/_main.scss */
+i.active {
+  background-color: #37f !important;
+  opacity: 1 !important;
+}
+
 /* Text overlay */
-/* line 155, ../sass/_main.scss */
+/* line 165, ../sass/_main.scss */
 .banner {
   font-family: 'Satisfy', cursive;
   z-index: 125;
@@ -633,13 +642,13 @@ button.plus, button.minus {
   text-shadow: 1px 1px white;
 }
 
-/* line 168, ../sass/_main.scss */
+/* line 178, ../sass/_main.scss */
 .banner h2:nth-child(even) {
   color: red;
 }
 
 /* Raindrops */
-/* line 173, ../sass/_main.scss */
+/* line 183, ../sass/_main.scss */
 #heavyrain {
   z-index: 150;
   position: absolute;
@@ -649,7 +658,7 @@ button.plus, button.minus {
   left: 0px;
   background-color: #aaa;
 }
-/* line 180, ../sass/_main.scss */
+/* line 190, ../sass/_main.scss */
 #heavyrain h1 {
   position: absolute;
   text-align: center;
