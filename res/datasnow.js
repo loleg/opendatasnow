@@ -1,6 +1,6 @@
 var MAX_PACKAGES = 1848; // as of 23.12.2014
 var NUM_RESULTS = 30;
-var MAX_TITLE_LENGTH = 50;
+var MAX_TITLE_LENGTH = 45;
 var NUM_RAINDROPS = 40;
 
 // Prepare the data query
@@ -70,6 +70,8 @@ function getDataFeed(remote_url) {
 	flakes.find('.active').removeClass('active');
 	$(this).addClass('active');
     });
+    // Clear info and reload
+    infobox.html(infobox.next().html());
     letItSnow();
   },
   error: function(err) {
@@ -92,10 +94,10 @@ var crossFade = function() {
 var $heavyrain = $('#heavyrain');
 for (var i = 0; i < NUM_RAINDROPS; i++) {
   setTimeout(function() {
-    var pc = Math.round(Math.random() * 100) + '%';
+    var px = Math.round(Math.random() * 100) + '%';
     $heavyrain.append('<div class="raindrop" '+
-        'style="left:' + pc + '"></div>');
-  }, i * 100);
+        'style="left:' + px + '"></div>');
+  }, Math.round(Math.random() * 5000) + (i * 100));
 }
 
 // Randomize the greetings order
