@@ -1,7 +1,7 @@
 Let it snow (Open Data)!
 ========================
 
-A somewhat whimsical interactive visualisation of new datasets on the pilot Swiss Open Data portal (via CKAN API).
+A whimsical interactive visualisation of data packages on the pilot Swiss Open Data portal (via [CKAN API](http://docs.ckan.org/en/latest/api/index.html)). A falling snow flake represents one of the twenty latest additions, while the "I'm feeling lucky" button grabs a random page of the alphabetically ordered list of all packages.
 
 Credits:
 
